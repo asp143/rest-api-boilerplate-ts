@@ -3,7 +3,9 @@ import mongoose from 'mongoose';
 
 const db = mongoose.connection;
 
-mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true });
+const dbHost = process.env.DB_HOST || '';
+
+mongoose.connect(dbHost, { useNewUrlParser: true });
 
 db.once('open', () => {
     console.log('Connected to db!');

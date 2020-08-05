@@ -2,6 +2,8 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+import './utils/db';
+
 import indexRouter from './routes/index';
 
 const app = express();
