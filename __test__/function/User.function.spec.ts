@@ -1,4 +1,3 @@
-import { doesNotMatch } from 'assert';
 jest.mock('../../src/model/User.model');
 import UserFunc from '../../src/function/User.function';
 
