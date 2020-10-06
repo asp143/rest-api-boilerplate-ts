@@ -14,7 +14,7 @@ interface ICompanySchema extends Document {
 }
 
 // Virtuals
-CompanySchema.virtual('companyName').get(function() {
+CompanySchema.virtual('companyName').get(function(this: ICompanySchema) {
     return this.name;
 });
 // Methods
@@ -25,7 +25,7 @@ interface ICompanyBase extends ICompanySchema {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ICompany extends ICompanySchema {
+export interface ICompany extends ICompanyBase {
     // ...
 }
 

@@ -39,24 +39,24 @@ const UserSchema = new Schema({
 });
 
 enum Gender {
-  Male = 1,
-  Female = 0
+    Male = 1,
+    Female = 0
 }
 
 // DO NOT export this
 interface IUserSchema extends Document {
-  firstName: string;
-  lastName?: string;
-  username: string;
-  password: string;
-  // leave the company field out
-  gender: Gender;
-  friends: Types.Array<string>;
-  creditCards?: Types.Map<string>;
+    firstName: string;
+    lastName?: string;
+    username: string;
+    password: string;
+    // leave the company field out
+    gender: Gender;
+    friends: Types.Array<string>;
+    creditCards?: Types.Map<string>;
 }
 
 // Virtuals
-UserSchema.virtual("fullName").get(function() {
+UserSchema.virtual("fullName").get(function(this: IUserSchema) {
     return this.firstName + this.lastName;
 });
 
@@ -67,34 +67,34 @@ UserSchema.methods.getGender = function() {
 
 // DO NOT export
 interface IUserBase extends IUserSchema {
-  fullName: string;
-  getGender(): string;
+    fullName: string;
+    getGender(): string;
 }
 
 // Export this for strong typing
 export interface IUser extends IUserBase {
-  company: ICompany["_id"];
+    company: ICompany["_id"];
 }
 
 // Export this for strong typing
 export interface IUser_populated extends IUserBase {
-  company: ICompany;
+    company: ICompany;
 }
 
 // Static methods
-UserSchema.statics.findMyCompany = async function(id) {
+UserSchema.statics.findMyCompany = async function(id: string) {
     return this.findById(id).populate("company").exec();
 };
 
 // For model
 export interface IUserModel extends Model<IUser> {
-  findMyCompany(id: string): Promise<IUser_populated>
+    findMyCompany(id: string): Promise<IUser_populated>
 }
 
 // Document middlewares
-UserSchema.pre<IUser>("save", function(next) {
+UserSchema.pre<IUser>("save", function(next: any) {
     if (this.isModified("password")) {
-        this.password = [];//hashPassword(this.password);
+        this.password = '';//hashPassword(this.password);
     }
 });
 
