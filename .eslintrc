@@ -15,7 +15,7 @@
     "rules":  {
       "indent": ["error", 4, { "SwitchCase": 1 }],
       "comma-spacing": "error",
-      "func-style": ["error", "expression", {
+      "func-style": ["error", "declaration", {
           "allowArrowFunctions": true
       }],
       "implicit-arrow-linebreak": ["error", "beside"],
