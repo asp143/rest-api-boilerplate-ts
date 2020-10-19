@@ -15,14 +15,14 @@ import app from '../app';
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port: string | number | false = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server: http.Server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -63,7 +63,7 @@ function onError(error: any) {
         throw error;
     }
 
-    const bind = typeof port === 'string'
+    const bind: string = typeof port === 'string'
         ? `Pipe ${port}`
         : `Port ${port}`;
 
