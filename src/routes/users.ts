@@ -1,10 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
+import { FindOne } from '../controller/User.controller';
 
-const router = express.Router();
+const router = Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.status(200).json({ success: true });
-});
+router.get('/', FindOne);
 
 export default router;
