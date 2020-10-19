@@ -35,7 +35,7 @@ export interface ICompany_populated extends ICompanySchema {
 }
 
 // static methods
-CompanySchema.statics.findName = async function (name: string): Promise<ICompany> {
+CompanySchema.statics.findName = async function (): Promise<ICompany> {
     return this.name;
 };
 
@@ -45,7 +45,7 @@ export interface ICompanyModel extends Model<ICompany> {
 }
 
 // Query middlewares
-CompanySchema.post("findOneAndUpdate", async function(doc) {
+CompanySchema.post("findOneAndUpdate", async function() {
     // await updateCompanyReference(doc);
 });
 
