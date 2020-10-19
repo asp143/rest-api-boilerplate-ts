@@ -1,7 +1,7 @@
 export default class Response {
     public status = 200;
     public success = true;
-    public payload = {};
+    public payload: unknown = {};
 
     constructor() {
         // ... 
@@ -13,7 +13,7 @@ export default class Response {
         this.success = false;
     }
 
-    public setPayload(status: number, payload: Record<string, unknown>): void {
+    public setPayload(status: number, payload: unknown): void {
         this.status = status;
         this.payload = payload;
     }
