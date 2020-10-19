@@ -4,7 +4,7 @@ import UserFunctions from '../function/User.function';
 // Interface
 import { Request, Response } from 'express';
 
-export async function FindOne(req: Request, res: Response): Promise<any> {
+export async function FindOne(req: Request, res: Response): Promise<void> {
     rxjs
         .from(UserFunctions.Find(req.query))
         .subscribe(

@@ -62,7 +62,7 @@ UserSchema.virtual("fullName").get(function(this: IUserSchema) {
 
 // Methods
 UserSchema.methods.getGender = function() {
-    return this.gender > 0; // "Male" : "Female"
+    return this.gender; // "Male" : "Female"
 };
 
 // DO NOT export
@@ -92,14 +92,14 @@ export interface IUserModel extends Model<IUser> {
 }
 
 // Document middlewares
-UserSchema.pre<IUser>("save", function(next: any) {
+UserSchema.pre<IUser>("save", function() {
     if (this.isModified("password")) {
         this.password = '';//hashPassword(this.password);
     }
 });
 
 // Query middlewares
-UserSchema.post<IUser>("findOneAndUpdate", async function(doc) {
+UserSchema.post<IUser>("findOneAndUpdate", async function() {
     // await updateCompanyReference(doc);
 });
 
