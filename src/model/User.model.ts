@@ -73,7 +73,8 @@ interface IUserBase extends IUserSchema {
 
 // Export this for strong typing
 export interface IUser extends IUserBase {
-    company: ICompany["_id"];
+    company: ICompany['_id']
+    // company: ICompany["_id"];
 }
 
 // Export this for strong typing
