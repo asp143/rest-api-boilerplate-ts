@@ -38,7 +38,7 @@ const UserSchema = new Schema({
     }
 });
 
-enum Gender {
+export enum Gender {
     Male = 1,
     Female = 0
 }
@@ -49,7 +49,6 @@ interface IUserSchema extends Document {
     lastName?: string;
     username: string;
     password: string;
-    // leave the company field out
     gender: Gender;
     friends: Types.Array<string>;
     creditCards?: Types.Map<string>;
